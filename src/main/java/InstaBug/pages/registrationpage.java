@@ -14,7 +14,7 @@ public class registrationpage extends Base {
 
     // Finding page elements
 
-    WebElement Signupbtn = driver.findElement(By.xpath("//*[@class = '_42ft _4jy0 _16jx _4jy6 _4jy2 selected _51sy']"));
+    //WebElement Signupbtn = driver.findElement(By.xpath("//a[@class = '_42ft _4jy0 _16jx _4jy6 _4jy2 selected _51sy']"));
     WebElement FirstName = driver.findElement(By.xpath("//*[@name='firstname']"));
     WebElement SurName = driver.findElement(By.xpath("//*[@name='lastname']"));
     WebElement UserName = driver.findElement(By.xpath("//*[@name='reg_email__']"));
@@ -22,18 +22,28 @@ public class registrationpage extends Base {
     WebElement BirthDay = driver.findElement(By.id("day"));
     WebElement BirthMonth = driver.findElement(By.id("month"));
     WebElement BirthYear = driver.findElement(By.id("year"));
-    WebElement CheckFemale = driver.findElement(By.id("u_0_6_0e"));
-    WebElement CheckMale = driver.findElement(By.id("u_0_7_ZJ"));
-    WebElement CheckCustom = driver.findElement(By.id("u_0_8_83"));
-    WebElement Pronoun = driver.findElement(By.id("js_1if"));
+    WebElement CheckFemale = driver.findElement(By.xpath("//*[contains(@name, 'sex')]"));
+    WebElement CheckMale = driver.findElement(By.xpath("//*[contains(@name, 'sex')]"));
+    WebElement CheckCustom = driver.findElement(By.xpath("//*[contains(@name, 'sex')]"));
+    WebElement Pronoun = driver.findElement(By.xpath("//*[contains(@name, 'preferred_pronoun')]"));
     WebElement CustomGender = driver.findElement(By.xpath("//input[@name= 'custom_gender']"));
-    WebElement Submitbtn = driver.findElement(By.id("u_0_10_Jm"));
+    WebElement Submitbtn = driver.findElement(By.xpath("//*[contains(@name, 'websubmit')]"));
 
 
     // Initializing the page functions for tests handling
 
-    public void GoTOSignupPage(){
+    public static void gotosignup()
+    {
+        WebElement Signupbtn = driver.findElement(By.xpath("//a[@class = '_42ft _4jy0 _16jx _4jy6 _4jy2 selected _51sy']"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Signupbtn.click();
+
+    }
+
+    public void GoTOSignupPage(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+       //Signupbtn.click();
+        //driver.get("https://www.facebook.com/r.php?next=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fdevelopment%2Fbuild-and-test%2Ftest-users&locale=en_GB&display=page");
     }
     public void FillingName(String firstname , String lastname){
         FirstName.sendKeys(firstname);
@@ -62,9 +72,9 @@ public class registrationpage extends Base {
                 break;
         }
     }
-    public void CheckingCustomGender (String customgender , String pronoun){
+    public void CheckingCustomGender (String customgender , int pronounindex){
         Select selectpronoun = new Select(Pronoun);
-        selectpronoun.selectByValue(pronoun);
+        selectpronoun.selectByIndex(pronounindex);
         CheckCustom.click();
         CustomGender.sendKeys(customgender);
 

@@ -15,10 +15,12 @@ public class Base {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://developers.facebook.com/docs/development/build-and-test/test-users");
+       driver.get("https://developers.facebook.com/docs/development/build-and-test/test-users");
         driver.findElement(By.xpath("//a[@class='_p47 lfloat _1k5h']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
+
+
     public static void close_browser(){
         driver.quit();
     }

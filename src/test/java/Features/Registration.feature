@@ -13,12 +13,12 @@ Feature: Check the Registration Scenario
   When user fill the firstname as "<firstname>" and lastname as "<lastname>"
   And fill the username as "<email>" and password as "<password>"
   And select the birth date, Day as "<birthday>" and Month as "<birthmonth>" and Year as "<birthyear>"
-  And select the custom gender and fill the pronoun as "<pronoun>" and gender as "<Gender>"
+  And select the custom gender and fill the pronoun as <pronoun> and gender as "<Gender>"
   And click register
   Then App Navigate user to the next page
   Examples:
   | firstname | lastname | email   | password  | birthday | birthmonth | birthyear | pronoun | Gender
-  | ali       | ahmed    | m@m.com | P@ssw0rd  | 1        | 2          | 1994      | she     | male
-  | joe       | felix    | j@f.com | P@ssw0rd  | 1        | 2          | 1994      | he      | male
-  | leo       | messi    | l@m.com | P@ssw0rd  | 1        | 2          | 1994      | they    | male
+  | ali       | ahmed    | m@m.com | P@ssw0rd  | 1        | 2          | 1994      | 1       | male
+  | joe       | felix    | j@f.com | P@ssw0rd  | 1        | 2          | 1994      | 2       | male
+  | leo       | messi    | l@m.com | P@ssw0rd  | 1        | 2          | 1994      | 3       | male
 
