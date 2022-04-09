@@ -2,6 +2,7 @@ package Tests;
 
 import InstaBug.Base.Base;
 import InstaBug.pages.registrationpage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -63,4 +64,10 @@ public class Registration_test extends Base {
     }
 
 
+    @And("retype the email as {string}")
+    public void retypeTheEmailAs(String retypeemail) {
+        registpage = new registrationpage();
+        registpage.RetypeTheEmail(retypeemail);
+
+    }
 }
